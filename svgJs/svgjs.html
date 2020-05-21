@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="description" content="Svg.draw.js : Demo-Page">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="demo.css">
+
+  <title>Svg.draw.js | Demo-Page</title>
+
+</head>
+
+<body>
+  <div id="container">
+    <h1>svg.draw.js - Demo</h1>
+
+
+    <div class="box">
+      <div id="polygon" onmousedown="dibujar()" ></div>
+    </div>
+
+      <div class="box">
+      <div id="polygono" ></div>
+    </div>
+    
+    
+
+
+  </div>
+
+  <script src="svg.min.js"></script>
+  <script src="svg.draw.min.js"></script>
+  <script>
+
+function dibujar(){
+
+  new SVG('polygon').draw('point', event);
+}
+
+ 
+
+    var poly = new SVG('polygon').size('100%', '100%').polygon().draw().attr('stroke-width',1).attr('fill','none');
+  
+      
+
+
+
+   poly.on('drawstart', function(e){
+            document.addEventListener('contextmenu', function(e){ // Cierra poligono con clik derecho
+              e.preventDefault();
+              poly.draw('done');
+              poly.off('drawstart');
+
+               
+
+            });
+          });
+
+
+
+
+
+
+        </script>
+      </body>
+      </html>
